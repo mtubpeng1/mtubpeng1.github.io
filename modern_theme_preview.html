@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bo Peng - Professor | Southwest Petroleum University</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2c5282;
@@ -24,8 +25,8 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            font-size: 16px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 17px;
             line-height: 1.7;
             color: var(--text-color);
             background: var(--bg-color);
@@ -60,30 +61,21 @@
         }
         
         .profile-name {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             margin-bottom: 5px;
         }
         
         .profile-title {
-            font-size: 14px;
+            font-size: 15px;
             opacity: 0.9;
             margin-bottom: 15px;
         }
         
         .profile-contact {
-            font-size: 13px;
+            font-size: 14px;
             opacity: 0.85;
             line-height: 1.8;
-        }
-        
-        .profile-contact a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .profile-contact a:hover {
-            text-decoration: underline;
         }
         
         .nav-menu {
@@ -97,7 +89,7 @@
         .nav-menu a {
             color: rgba(255,255,255,0.9);
             text-decoration: none;
-            font-size: 15px;
+            font-size: 16px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -147,7 +139,59 @@
             color: var(--accent-color);
         }
         
-        /* News */
+        /* News - 可折叠 */
+        .news-year-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+        }
+        
+        .news-year-header:hover {
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+        }
+        
+        .news-year-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .news-year-count {
+            background: var(--secondary-color);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .news-year-icon {
+            transition: transform 0.3s;
+        }
+        
+        .news-year-header.collapsed .news-year-icon {
+            transform: rotate(-90deg);
+        }
+        
+        .news-year-content {
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .news-year-content.collapsed {
+            max-height: 0 !important;
+        }
+        
         .news-item {
             padding: 15px 0;
             border-bottom: 1px solid var(--border-color);
@@ -264,17 +308,17 @@
             color: #553c9a;
         }
         
-        /* Research */
+        /* Research - 紧凑布局 */
         .research-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 15px;
         }
         
         .research-card {
             background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            padding: 25px;
-            border-radius: 10px;
+            padding: 18px 20px;
+            border-radius: 8px;
             border-left: 4px solid var(--accent-color);
             transition: transform 0.3s;
         }
@@ -284,15 +328,18 @@
         }
         
         .research-card h3 {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .research-card p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.5;
         }
         
         /* Services */
@@ -383,11 +430,10 @@
                 <div style="margin-top: 10px;">
                     <i class="fas fa-envelope"></i>
                     <a href="#" onclick="showEmail(); return false;" id="email-link" style="display:none;">bopeng@swpu.edu.cn</a>
-                    <span id="email-placeholder" style="color: rgba(255,255,255,0.7); font-size: 12px;">Click to reveal email</span>
+                    <span id="email-placeholder" style="color: rgba(255,255,255,0.7); font-size: 12px; cursor: pointer;">Click to reveal email</span>
                 </div>
                 <script>
                     function showEmail() {
-                        // 使用 JavaScript 动态生成邮箱，防止爬虫
                         var email = 'bopeng' + '@' + 'swpu.edu.cn';
                         document.getElementById('email-link').style.display = 'inline';
                         document.getElementById('email-placeholder').style.display = 'none';
@@ -418,7 +464,16 @@
                 <i class="fas fa-newspaper"></i>
                 Latest News
             </h2>
-            <div class="news-list">
+            
+            <!-- 2026 News -->
+            <div class="news-year-header" onclick="toggleNewsYear('news-2026')">
+                <div class="news-year-title">
+                    <i class="fas fa-chevron-down news-year-icon"></i>
+                    <span>2026</span>
+                    <span class="news-year-count">3 papers</span>
+                </div>
+            </div>
+            <div id="news-2026" class="news-year-content">
                 <div class="news-item">
                     <div class="news-date">2026-01</div>
                     <div class="news-content">
@@ -440,6 +495,17 @@
                         <span class="news-congrats">Congrats to Dr. Quan Zhang</span>
                     </div>
                 </div>
+            </div>
+            
+            <!-- 2025 News (可折叠) -->
+            <div class="news-year-header collapsed" onclick="toggleNewsYear('news-2025')">
+                <div class="news-year-title">
+                    <i class="fas fa-chevron-right news-year-icon"></i>
+                    <span>2025</span>
+                    <span class="news-year-count">11 papers</span>
+                </div>
+            </div>
+            <div id="news-2025" class="news-year-content collapsed">
                 <div class="news-item">
                     <div class="news-date">2025-12</div>
                     <div class="news-content">
@@ -450,12 +516,19 @@
                 <div class="news-item">
                     <div class="news-date">2025-11</div>
                     <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>International Conference on Neural Information Processing (ICONIP 2025, CCF-C)</strong></span>! 
+                        <span class="news-congrats">Congrats to Dr. Xu Li</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-11</div>
+                    <div class="news-content">
                         One paper was accepted by <span class="news-journal"><strong>Aerospace Science and Technology (SCI, JCR Q1)</strong></span>! 
                         <span class="news-congrats">Congrats to W Lin</span>
                     </div>
                 </div>
                 <div class="news-item">
-                    <div class="news-date">2025-11</div>
+                    <div class="news-date">2025-10</div>
                     <div class="news-content">
                         One paper was accepted by <span class="news-journal"><strong>Expert Systems with Applications (SCI, JCR Q1)</strong></span>! 
                         <span class="news-congrats">Congrats to Dr. Wenjun Zhou</span>
@@ -478,15 +551,29 @@
                 <div class="news-item">
                     <div class="news-date">2025-05</div>
                     <div class="news-content">
-                        One paper was accepted by <span class="news-journal"><strong>IEEE SMC 2025 (CCF-C)</strong></span>! 
+                        One paper was accepted by <span class="news-journal"><strong>IEEE International Conference on Systems, Man, and Cybernetics (IEEE SMC 2025, CCF-C)</strong></span>! 
                         <span class="news-congrats">Congrats to Yuchuan He</span>
                     </div>
                 </div>
                 <div class="news-item">
                     <div class="news-date">2025-04</div>
                     <div class="news-content">
-                        One paper was accepted by <span class="news-journal"><strong>IEEE IJCNN 2025 (CCF-C)</strong></span>! 
+                        One paper was accepted by <span class="news-journal"><strong>IEEE International Joint Conference on Neural Networks (IEEE IJCNN 2025, CCF-C)</strong></span>! 
                         <span class="news-congrats">Congrats to Jiaxun Xu</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-03</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>Physics of Fluids (SCI, JCR Q2)</strong></span>! 
+                        <span class="news-congrats">Congrats to Wu Lin</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-01</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control (SCI, JCR Q1)</strong></span>! 
+                        <span class="news-congrats">Congrats to Wenzhao Han</span>
                     </div>
                 </div>
             </div>
@@ -522,15 +609,15 @@
                 </div>
                 <div class="research-card">
                     <h3><i class="fas fa-x-ray"></i> Medical Image Analysis</h3>
-                    <p>Advanced imaging techniques for medical diagnostics and computational analysis</p>
+                    <p>Advanced imaging techniques for medical diagnostics</p>
                 </div>
                 <div class="research-card">
                     <h3><i class="fas fa-brain"></i> Deep Learning & ML</h3>
-                    <p>Cross-disciplinary applications in healthcare, petroleum industry, and aerodynamics</p>
+                    <p>Cross-disciplinary applications in healthcare and industry</p>
                 </div>
                 <div class="research-card">
                     <h3><i class="fas fa-microchip"></i> GPU Computing</h3>
-                    <p>High-performance computing for medical and scientific applications</p>
+                    <p>High-performance computing for scientific applications</p>
                 </div>
             </div>
         </section>
@@ -740,5 +827,31 @@
             <p>Last updated: March 2026</p>
         </footer>
     </main>
+    
+    <!-- JavaScript for collapsible news -->
+    <script>
+        function toggleNewsYear(yearId) {
+            const content = document.getElementById(yearId);
+            const header = content.previousElementSibling;
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                content.classList.add('collapsed');
+                header.classList.add('collapsed');
+                content.style.maxHeight = '0';
+            }
+        }
+        
+        // Initialize 2025 news as collapsed
+        document.addEventListener('DOMContentLoaded', function() {
+            const news2025 = document.getElementById('news-2025');
+            if (news2025) {
+                news2025.style.maxHeight = '0';
+            }
+        });
+    </script>
 </body>
 </html>
