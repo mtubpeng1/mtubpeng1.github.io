@@ -30,21 +30,19 @@
             line-height: 1.7;
             color: var(--text-color);
             background: var(--bg-color);
+            display: flex;
             max-width: 1480px;
             margin: 0 auto;
+            min-height: 100vh;
         }
         
         .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            bottom: 0;
             width: 280px;
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             padding: 40px 30px;
             overflow-y: auto;
-            z-index: 1000;
+            flex-shrink: 0;
         }
         
         .profile-section {
@@ -82,23 +80,12 @@
         .nav-menu i { width: 20px; text-align: center; }
         
         .main-content {
-            margin-left: 280px;
+            flex: 1;
             padding: 50px 60px;
             max-width: 1200px;
-            margin-right: auto;
         }
         
-        /* 4K 屏幕居中 - 使用绝对定位 */
-        @media (min-width: 2560px) {
-            .main-content {
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                margin-left: 0;
-                margin-right: 0;
-                max-width: 1200px;
-            }
-        }
+        
         
         .content-section {
             background: var(--card-bg);
