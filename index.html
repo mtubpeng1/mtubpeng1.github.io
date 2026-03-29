@@ -414,25 +414,77 @@
                 </ul>
             </div>
             
-            <h3 style="color: var(--primary-color); margin: 25px 0 15px 0; font-size: 18px;"><i class="fas fa-check-circle"></i> Graduated Students (Recent)</h3>
-            <h3 style="color: var(--primary-color); margin: 25px 0 15px 0; font-size: 18px;"><i class="fas fa-check-circle"></i> Graduated Students (Recent)</h3>
-            <div class="students-grid">
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Jiajun Cai</span><div class="student-destination">Ph.D. @ 重庆大学</div></div>
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Wenzhao Han</span><div class="student-destination">Ph.D. @ Nagoya University</div></div>
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Tianqiang Xiang</span><div class="student-destination">@ 四川银行总行</div></div>
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Yihong Zhu</span><div class="student-destination">@ 中国空气动力研究与发展中心</div></div>
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Xiaofeng Li</span><div class="student-destination">@ 绵阳师范学院</div></div>
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Yuting Zhang</span><div class="student-destination">@ 深圳中科飞测股份有限公司</div></div>
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Xinyue Zhang</span><div class="student-destination">@ 成都天奥测控技术有限公司</div></div>
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Zhiyong Chen</span><div class="student-destination">@ 深圳中科飞测科技股份有限公司</div></div>
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Yuhao Xia</span><div class="student-destination">@ 成都天奥信息科技有限公司</div></div>
-                <div class="student-card"><span class="student-year">2025</span><span class="student-info">Xinyu Li</span><div class="student-destination">@ 熊谷加世电器有限公司</div></div>
-                <div class="student-card"><span class="student-year">2024</span><span class="student-info">Yaqiong Xiao</span><div class="student-destination">@ 中信银行成都软件开发中心</div></div>
-                <div class="student-card"><span class="student-year">2024</span><span class="student-info">Yuqi Jiang</span><div class="student-destination">@ 西华师范大学网络与信息化管理中心</div></div>
-                <div class="student-card"><span class="student-year">2024</span><span class="student-info">Weidong Wang</span><div class="student-destination">@ 烜翊数智（上海）科技有限公司</div></div>
-                <div class="student-card"><span class="student-year">2024</span><span class="student-info">Weikang Hou</span><div class="student-destination">Ph.D. @ Kobe University</div></div>
+            <!-- 近 3 年毕业生 (2024-2026) -->
+            <div class="news-year-header" onclick="toggleStudentsYear('students-recent')">
+                <div class="news-year-title">
+                    <i class="fas fa-chevron-down news-year-icon"></i>
+                    <span>Recent Graduates (2024-2026)</span>
+                    <span class="news-year-count">14 students</span>
+                </div>
             </div>
-            <h3 style="color: var(--primary-color); margin: 25px 0 15px 0; font-size: 18px;"><i class="fas fa-user-graduate"></i> Undergraduate Students</h3>
+            <div id="students-recent" class="news-year-content">
+                <div class="students-grid">
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Jiajun Cai</span><div class="student-destination">Ph.D. @ 重庆大学</div></div>
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Wenzhao Han</span><div class="student-destination">Ph.D. @ Nagoya University</div></div>
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Tianqiang Xiang</span><div class="student-destination">@ 四川银行总行</div></div>
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Yihong Zhu</span><div class="student-destination">@ 中国空气动力研究与发展中心</div></div>
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Xiaofeng Li</span><div class="student-destination">@ 绵阳师范学院</div></div>
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Yuting Zhang</span><div class="student-destination">@ 深圳中科飞测股份有限公司</div></div>
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Xinyue Zhang</span><div class="student-destination">@ 成都天奥测控技术有限公司</div></div>
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Zhiyong Chen</span><div class="student-destination">@ 深圳中科飞测科技股份有限公司</div></div>
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Yuhao Xia</span><div class="student-destination">@ 成都天奥信息科技有限公司</div></div>
+                    <div class="student-card"><span class="student-year">2025</span><span class="student-info">Xinyu Li</span><div class="student-destination">@ 熊谷加世电器有限公司</div></div>
+                    <div class="student-card"><span class="student-year">2024</span><span class="student-info">Yaqiong Xiao</span><div class="student-destination">@ 中信银行成都软件开发中心</div></div>
+                    <div class="student-card"><span class="student-year">2024</span><span class="student-info">Yuqi Jiang</span><div class="student-destination">@ 西华师范大学网络与信息化管理中心</div></div>
+                    <div class="student-card"><span class="student-year">2024</span><span class="student-info">Weidong Wang</span><div class="student-destination">@ 烜翊数智（上海）科技有限公司</div></div>
+                    <div class="student-card"><span class="student-year">2024</span><span class="student-info">Weikang Hou</span><div class="student-destination">Ph.D. @ Kobe University</div></div>
+                </div>
+            </div>
+            
+            <!-- 早期毕业生 (可折叠) -->
+            <div class="news-year-header collapsed" onclick="toggleStudentsYear('students-early')">
+                <div class="news-year-title">
+                    <i class="fas fa-chevron-right news-year-icon"></i>
+                    <span>Earlier Graduates (2020-2023)</span>
+                    <span class="news-year-count">30+ students</span>
+                </div>
+            </div>
+            <div id="students-early" class="news-year-content collapsed">
+                <div class="students-grid">
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Teng Xie</span><div class="student-destination">Ph.D. @ SUN YAT-SEN UNIVERSITY</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Jingguo Qu</span><div class="student-destination">Ph.D. @ PolyU</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Yang Wu</span><div class="student-destination">@ 四川银行</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Yachuan Zhao</span><div class="student-destination">@ 四川电信</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Shuojie Wen</span><div class="student-destination">@ 浦发银行</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Hao Luo</span><div class="student-destination">@ 蜀道集团川高公司</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Peilin Li</span><div class="student-destination">@ 广安职业技术学院</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Hongmei Zhao</span><div class="student-destination">@ 精锋医疗</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Xinghuan Zhang</span><div class="student-destination">@ 中国空气动力研究与发展中心</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Zhongxin Chen</span><div class="student-destination">@ 成都市市容环卫管理事务中心</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Jianbin Feng</span><div class="student-destination">@ 中国银行金融科技限公司</div></div>
+                    <div class="student-card"><span class="student-year">2023</span><span class="student-info">Yongjie Shao</span><div class="student-destination">@ 建信金科成都事业群</div></div>
+                    <div class="student-card"><span class="student-year">2022</span><span class="student-info">Pan Zhang</span><div class="student-destination">@ Baidu</div></div>
+                    <div class="student-card"><span class="student-year">2022</span><span class="student-info">Yuheng Deng</span><div class="student-destination">@ Xiaomi</div></div>
+                    <div class="student-card"><span class="student-year">2022</span><span class="student-info">Yitian Liu</span><div class="student-destination">@ 新疆应急厅信息中心</div></div>
+                    <div class="student-card"><span class="student-year">2022</span><span class="student-info">Hao Zuo</span><div class="student-destination">@ 浦发银行</div></div>
+                    <div class="student-card"><span class="student-year">2022</span><span class="student-info">Linfeng Li</span><div class="student-destination">@ 浦发银行</div></div>
+                    <div class="student-card"><span class="student-year">2022</span><span class="student-info">Jing Ou</span><div class="student-destination">@ 成都农商行</div></div>
+                    <div class="student-card"><span class="student-year">2021</span><span class="student-info">Qiang Wang</span><div class="student-destination">Ph.D. @ UESTC</div></div>
+                    <div class="student-card"><span class="student-year">2021</span><span class="student-info">Xing Huang</span><div class="student-destination">@ 招银网络科技有限公司</div></div>
+                    <div class="student-card"><span class="student-year">2021</span><span class="student-info">Yiping Wang</span><div class="student-destination">@ 成都索贝</div></div>
+                    <div class="student-card"><span class="student-year">2021</span><span class="student-info">Tingting He</span><div class="student-destination">@ 成都瑞德斯特</div></div>
+                    <div class="student-card"><span class="student-year">2021</span><span class="student-info">Yaru Luo</span><div class="student-destination">@ 浦发银行</div></div>
+                    <div class="student-card"><span class="student-year">2021</span><span class="student-info">Zhendi Tang</span><div class="student-destination">@ 浦发银行</div></div>
+                    <div class="student-card"><span class="student-year">2021</span><span class="student-info">Yuanhao Tan</span><div class="student-destination">@ 成都今是科技</div></div>
+                    <div class="student-card"><span class="student-year">2020</span><span class="student-info">Lianhai He</span><div class="student-destination">@ 中信银行</div></div>
+                    <div class="student-card"><span class="student-year">2020</span><span class="student-info">Tianlan Yang</span><div class="student-destination">@ 中信银行</div></div>
+                    <div class="student-card"><span class="student-year">2020</span><span class="student-info">Yuxiao Qiu</span><div class="student-destination">@ 中信银行</div></div>
+                    <div class="student-card"><span class="student-year">2020</span><span class="student-info">Zhengqiu Xu</span><div class="student-destination">@ 中物院高性能数值模拟软件中心</div></div>
+                    <div class="student-card"><span class="student-year">2020</span><span class="student-info">Xing Luo</span><div class="student-destination">@ 工商银行</div></div>
+                </div>
+            </div>
+            
+            <h3 style="color: var(--primary-color); margin: 35px 0 15px 0; font-size: 18px;"><i class="fas fa-user-graduate"></i> Undergraduate Students</h3>
             <div class="students-grid">
                 <div class="student-card"><span class="student-year">2021</span><span class="student-info">Zeying Liu</span><div class="student-destination">University of Birmingham, UK</div></div>
                 <div class="student-card"><span class="student-year">2021</span><span class="student-info">Ziyuan Cao</span><div class="student-destination">Tokyo Metropolitan University, Japan</div></div>
@@ -470,6 +522,25 @@
             event.target.style.textDecoration = 'none';
             event.target.onclick = null;
         }
+        
+        function toggleStudentsYear(yearId) {
+            const content = document.getElementById(yearId);
+            const header = content.previousElementSibling;
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                header.classList.remove('collapsed');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                content.classList.add('collapsed');
+                header.classList.add('collapsed');
+                content.style.maxHeight = '0';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const studentsEarly = document.getElementById('students-early');
+            if (studentsEarly) studentsEarly.style.maxHeight = '0';
+        });
     </script>
 </body>
 </html>
