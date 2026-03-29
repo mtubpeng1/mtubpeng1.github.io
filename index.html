@@ -172,17 +172,20 @@
         .pub-tag.sci { background: #bee3f8; color: #2c5282; }
         .pub-tag.cscd { background: #e9d8fd; color: #553c9a; }
         
-        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         .research-card {
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            padding: 18px 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-color);
-            transition: transform 0.3s;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .research-card:hover { transform: translateY(-3px); }
-        .research-card h3 { font-size: 15px; color: var(--primary-color); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .research-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+        .research-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .research-card h3 { font-size: 18px; color: var(--primary-color); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .research-card ul { list-style: none; padding-left: 0; }
+        .research-card li { font-size: 14px; color: var(--text-light); padding: 6px 0; padding-left: 20px; position: relative; line-height: 1.6; }
+        .research-card li:before { content: "•"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold; }
+        .research-card li strong { color: var(--text-color); }
         
         .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
         .service-item { background: #f7fafc; padding: 15px 20px; border-radius: 8px; font-size: 14px; border-left: 3px solid var(--secondary-color); }
@@ -324,11 +327,69 @@
         
         <section id="research" class="content-section">
             <h2 class="section-title"><i class="fas fa-flask"></i> Research Interests</h2>
-            <div class="research-grid">
-                <div class="research-card"><h3><i class="fas fa-wave-square"></i> Medical Ultrasound Imaging</h3><p>Ultrasound Elastography, Ultrasound Localization Microscopy, Vector Flow Imaging, Pulse Wave Velocity</p></div>
-                <div class="research-card"><h3><i class="fas fa-x-ray"></i> Medical Image Analysis</h3><p>Advanced imaging techniques for medical diagnostics</p></div>
-                <div class="research-card"><h3><i class="fas fa-brain"></i> Deep Learning & ML</h3><p>Cross-disciplinary applications in healthcare and industry</p></div>
-                <div class="research-card"><h3><i class="fas fa-microchip"></i> GPU Computing</h3><p>High-performance computing for scientific applications</p></div>
+            
+            <!-- 方向 1: AI for Medical Ultrasound -->
+            <div class="research-card" style="margin-bottom: 20px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 12px; font-size: 18px;">
+                    <i class="fas fa-wave-square" style="color: #38b2ac;"></i> AI for Medical Ultrasound Imaging
+                </h3>
+                <ul style="line-height: 1.8; color: var(--text-light); padding-left: 20px;">
+                    <li><strong>AI-powered Ultrasound Elastography:</strong> Deep learning for motion tracking, strain estimation, and unsupervised speckle tracking</li>
+                    <li><strong>Ultrasound Localization Microscopy (ULM):</strong> Complex-valued networks for tissue clutter filtering, microbubble localization, and super-resolution imaging</li>
+                    <li><strong>Deep Learning for Ultrasound Beamforming:</strong> Neural network-based beamforming and signal processing</li>
+                    <li><strong>Knowledge Distillation:</strong> Resource-efficient ultrasound elastography with curriculum learning</li>
+                </ul>
+            </div>
+            
+            <!-- 方向 2: AI Medical Image Analysis -->
+            <div class="research-card" style="margin-bottom: 20px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 12px; font-size: 18px;">
+                    <i class="fas fa-heartbeat" style="color: #805ad5;"></i> AI-Powered Medical Image Analysis
+                </h3>
+                <ul style="line-height: 1.8; color: var(--text-light); padding-left: 20px;">
+                    <li><strong>Cardiac Image Analysis:</strong> Multi-view echocardiography classification, hypertrophic cardiomyopathy and cardiac amyloidosis diagnosis</li>
+                    <li><strong>Neurological Disorders:</strong> Alzheimer's disease early diagnosis with multimodal fusion, fMRI-based chronic insomnia classification</li>
+                    <li><strong>Vascular Imaging:</strong> Intracranial aneurysm detection and segmentation using geometric topological analysis networks</li>
+                    <li><strong>Multimodal AI:</strong> ECG-text fusion, contrastive learning for medical diagnosis</li>
+                </ul>
+            </div>
+            
+            <!-- 方向 3: GPU Computing -->
+            <div class="research-card" style="margin-bottom: 20px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 12px; font-size: 18px;">
+                    <i class="fas fa-microchip" style="color: #3182ce;"></i> GPU-Accelerated Computing
+                </h3>
+                <ul style="line-height: 1.8; color: var(--text-light); padding-left: 20px;">
+                    <li><strong>3D Ultrasound Elastography:</strong> GPU-accelerated coupled subsample estimation for volumetric breast imaging</li>
+                    <li><strong>Real-time Processing:</strong> High-performance computing for real-time ultrasound signal processing and image reconstruction</li>
+                    <li><strong>CUDA Optimization:</strong> Parallel algorithm design and performance optimization for medical imaging</li>
+                </ul>
+            </div>
+            
+            <!-- 方向 4: Computer Vision for Low-Altitude & Energy -->
+            <div class="research-card" style="margin-bottom: 20px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 12px; font-size: 18px;">
+                    <i class="fas fa-drone" style="color: #319795;"></i> Computer Vision for Low-Altitude Technology & Energy
+                </h3>
+                <ul style="line-height: 1.8; color: var(--text-light); padding-left: 20px;">
+                    <li><strong>Aerodynamics:</strong> Deep learning for iced airfoil prediction, wind tunnel ice crystal analysis, 3D point cloud processing</li>
+                    <li><strong>Petroleum Industry:</strong> Seismic data processing, drilling condition recognition, bubble segmentation in gas-liquid flow</li>
+                    <li><strong>Video Analysis:</strong> Video anomaly detection, infrared small target detection with contrast-enhanced networks</li>
+                    <li><strong>Traffic Prediction:</strong> Multi-scale information fusion networks for long-term traffic forecasting</li>
+                </ul>
+            </div>
+            
+            <!-- 方向 5: Efficient AI & LLM -->
+            <div class="research-card">
+                <h3 style="color: var(--primary-color); margin-bottom: 12px; font-size: 18px;">
+                    <i class="fas fa-robot" style="color: #ed8936;"></i> Efficient AI & Large Language Models
+                </h3>
+                <ul style="line-height: 1.8; color: var(--text-light); padding-left: 20px;">
+                    <li><strong>LLM Quantization:</strong> Gradient-aware LoRA fine-tuning, efficient LLM deployment (GA-LoftQ)</li>
+                    <li><strong>Knowledge Graph + LLM:</strong> Entity similarity RAG for precise knowledge retrieval</li>
+                    <li><strong>Model Compression:</strong> Knowledge distillation, dynamic pruning for resource-efficient AI</li>
+                    <li><strong>Efficient Deep Learning:</strong> Curriculum learning, lightweight network design</li>
+                </ul>
             </div>
         </section>
         
