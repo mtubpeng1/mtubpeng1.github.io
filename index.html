@@ -83,28 +83,18 @@
             margin-left: 280px;
             padding: 50px 60px;
             max-width: 1200px;
+            margin-right: auto;
         }
         
-        /* 4K 屏幕和超宽屏居中适配 */
+        /* 4K 屏幕居中 - 使用绝对定位 */
         @media (min-width: 2560px) {
-            body {
-                display: flex;
-            }
-            .sidebar {
-                position: fixed;
-                flex-shrink: 0;
-            }
             .main-content {
-                margin-left: 280px;
-                margin-right: auto;
-                flex: 1;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-left: 0;
+                margin-right: 0;
                 max-width: 1200px;
-            }
-            /* 在超大屏幕上居中 */
-            @media (min-width: 3840px) {
-                .main-content {
-                    margin-left: calc((100vw - 1200px) / 2);
-                }
             }
         }
         
