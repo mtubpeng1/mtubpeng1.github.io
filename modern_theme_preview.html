@@ -429,15 +429,20 @@
                 </div>
                 <div style="margin-top: 10px;">
                     <i class="fas fa-envelope"></i>
-                    <a href="#" onclick="showEmail(); return false;" id="email-link" style="display:none;">bopeng@swpu.edu.cn</a>
-                    <span id="email-placeholder" style="color: rgba(255,255,255,0.7); font-size: 12px; cursor: pointer;">Click to reveal email</span>
+                    <span id="email-text" style="color: rgba(255,255,255,0.9); font-size: 13px; cursor: pointer; border-bottom: 1px dashed rgba(255,255,255,0.5);" onclick="revealEmail()">Click to reveal email</span>
+                    <a href="#" id="email-link" style="display: none; color: white; text-decoration: none;" onclick="return false;">bopeng@swpu.edu.cn</a>
                 </div>
                 <script>
-                    function showEmail() {
+                    function revealEmail() {
                         var email = 'bopeng' + '@' + 'swpu.edu.cn';
-                        document.getElementById('email-link').style.display = 'inline';
-                        document.getElementById('email-placeholder').style.display = 'none';
-                        document.getElementById('email-link').href = 'mailto:' + email;
+                        var textEl = document.getElementById('email-text');
+                        var linkEl = document.getElementById('email-link');
+                        if (textEl && linkEl) {
+                            textEl.style.display = 'none';
+                            linkEl.style.display = 'inline';
+                            linkEl.href = 'mailto:' + email;
+                            linkEl.textContent = email;
+                        }
                     }
                 </script>
             </div>
