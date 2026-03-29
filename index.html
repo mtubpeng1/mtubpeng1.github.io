@@ -83,6 +83,15 @@
             margin-left: 280px;
             padding: 50px 60px;
             max-width: 1200px;
+            margin-right: auto;
+        }
+        
+        /* 4K 屏幕适配 */
+        @media (min-width: 2560px) {
+            .main-content {
+                margin-left: calc(280px + (100vw - 2560px) / 2);
+                margin-right: auto;
+            }
         }
         
         .content-section {
