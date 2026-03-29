@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bo Peng - Professor | Southwest Petroleum University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c5282;
+            --secondary-color: #3182ce;
+            --accent-color: #38b2ac;
+            --text-color: #2d3748;
+            --text-light: #718096;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+        
+        /* 侧边导航 */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 280px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 40px 30px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        
+        .profile-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .profile-title {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .profile-contact {
+            font-size: 13px;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+        
+        .profile-contact a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .profile-contact a:hover {
+            text-decoration: underline;
+        }
+        
+        .nav-menu {
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .nav-menu a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+        
+        .nav-menu i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* 主内容区 */
+        .main-content {
+            margin-left: 280px;
+            padding: 50px 60px;
+            max-width: 1200px;
+        }
+        
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title i {
+            color: var(--accent-color);
+        }
+        
+        /* News */
+        .news-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+        
+        .news-item:hover {
+            background: #f7fafc;
+            padding-left: 15px;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-date {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .news-content {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .news-journal {
+            font-style: italic;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .news-congrats {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        /* Publications */
+        .pub-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+        
+        .pub-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .pub-authors {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .pub-authors strong {
+            color: var(--text-color);
+        }
+        
+        .pub-journal {
+            font-size: 14px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .pub-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .pub-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .pub-tag.jcr-q1 {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        
+        .pub-tag.jcr-q2 {
+            background: #feebc8;
+            color: #c05621;
+        }
+        
+        .pub-tag.jcr-q3 {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        
+        .pub-tag.sci {
+            background: #bee3f8;
+            color: #2c5282;
+        }
+        
+        .pub-tag.cscd {
+            background: #e9d8fd;
+            color: #553c9a;
+        }
+        
+        /* Research */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .research-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-color);
+            transition: transform 0.3s;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .research-card h3 {
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .research-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+        }
+        
+        .service-item {
+            background: #f7fafc;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        /* Students */
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .student-card {
+            background: #f7fafc;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .student-year {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        
+        .student-info {
+            color: var(--text-color);
+        }
+        
+        .student-destination {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                padding: 30px 20px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 30px 20px;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+        <div class="profile-section">
+            <img src="person.png" alt="Bo Peng" class="profile-avatar">
+            <div class="profile-name">Bo PENG (彭博)</div>
+            <div class="profile-title">Professor (PhD)</div>
+            <div class="profile-contact">
+                <div>Southwest Petroleum University</div>
+                <div>Computer Science & Technology</div>
+                <div style="margin-top: 15px;">
+                    <i class="fas fa-map-marker-alt"></i> 
+                    Room 515, MingLi Building<br>
+                    Chengdu 610000, China
+                </div>
+                <div style="margin-top: 10px;">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:bopeng@swpu.edu.cn">bopeng@swpu.edu.cn</a>
+                </div>
+            </div>
+        </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#news"><i class="fas fa-newspaper"></i> News</a></li>
+                <li><a href="#biography"><i class="fas fa-user"></i> Biography</a></li>
+                <li><a href="#research"><i class="fas fa-flask"></i> Research</a></li>
+                <li><a href="#publications"><i class="fas fa-book"></i> Publications</a></li>
+                <li><a href="#services"><i class="fas fa-chalkboard-teacher"></i> Services</a></li>
+                <li><a href="#students"><i class="fas fa-graduation-cap"></i> Students</a></li>
+                <li><a href="https://scholar.google.com/citations?hl=en&user=1KgRnSAAAAAJ" target="_blank"><i class="fas fa-external-link-alt"></i> Google Scholar</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!-- 主内容 -->
+    <main class="main-content">
+        <!-- News -->
+        <section id="news" class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-newspaper"></i>
+                Latest News
+            </h2>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-date">2026-01</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>Modelling and Simulation in Materials Science and Engineering (SCI, JCR Q2)</strong></span>! 
+                        <span class="news-congrats">Congrats to Haiyang Tang</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2026-01</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>Biomedical Signal Processing and Control (SCI, JCR Q2)</strong></span>! 
+                        <span class="news-congrats">Congrats to Jiajun Cai</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2026-01</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>Journal of Applied Geophysics (SCI, JCR Q2)</strong></span>! 
+                        <span class="news-congrats">Congrats to Dr. Quan Zhang</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-12</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>Ultrasonic Imaging (SCI, JCR Q3)</strong></span>! 
+                        <span class="news-congrats">Congrats to Yan Li</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-11</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>Aerospace Science and Technology (SCI, JCR Q1)</strong></span>! 
+                        <span class="news-congrats">Congrats to W Lin</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-11</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>Expert Systems with Applications (SCI, JCR Q1)</strong></span>! 
+                        <span class="news-congrats">Congrats to Dr. Wenjun Zhou</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-09</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>Petroleum Science (SCI, JCR Q1)</strong></span>! 
+                        <span class="news-congrats">Congrats to Jiabin Shi</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-07</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>IEEE Transactions on Biomedical Engineering (SCI, JCR Q1)</strong></span>! 
+                        <span class="news-congrats">Congrats to Xinyue Zhang</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-05</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>IEEE SMC 2025 (CCF-C)</strong></span>! 
+                        <span class="news-congrats">Congrats to Yuchuan He</span>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-04</div>
+                    <div class="news-content">
+                        One paper was accepted by <span class="news-journal"><strong>IEEE IJCNN 2025 (CCF-C)</strong></span>! 
+                        <span class="news-congrats">Congrats to Jiaxun Xu</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Biography -->
+        <section id="biography" class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-user"></i>
+                Biography
+            </h2>
+            <p style="line-height: 1.8; margin-bottom: 15px;">
+                Bo Peng received his B.E. degree in Computer Science from Southwest Petroleum University (SWPU), Chengdu, China, in 2003, followed by an M.S. in 2007 and a Ph.D. in 2014 from Sichuan University, Chengdu, China. He joined SWPU as a Lecturer in 2007 and currently serves as a Professor of Computer Science.
+            </p>
+            <p style="line-height: 1.8; margin-bottom: 15px;">
+                Between 2014 and 2015, he pursued post-doctoral research in the Department of Biomedical Engineering at Michigan Technological University, Houghton, USA, under the supervision of Dr. Jingfeng Jiang. From 2020 to 2021, he was a Visiting Scholar at the Medical Ultrasound Engineering (MUSE) Lab in the Department of Biomedical Engineering, Tsinghua University School of Medicine, Beijing, China, working with Dr. Jianwen Luo (Chang Jiang Scholar Chair Professor).
+            </p>
+            <p style="line-height: 1.8;">
+                <strong>Research Focus:</strong> Medical imaging technologies, with expertise in ultrasound elastography, ultrasound localization microscopy, GPU-accelerated computing, and medical image analysis. Recently expanded into machine learning, computer vision (petroleum industry and aerodynamics applications), and LLM quantification.
+            </p>
+        </section>
+        
+        <!-- Research -->
+        <section id="research" class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-flask"></i>
+                Research Interests
+            </h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3><i class="fas fa-wave-square"></i> Medical Ultrasound Imaging</h3>
+                    <p>Ultrasound Elastography, Ultrasound Localization Microscopy, Vector Flow Imaging, Pulse Wave Velocity</p>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fas fa-x-ray"></i> Medical Image Analysis</h3>
+                    <p>Advanced imaging techniques for medical diagnostics and computational analysis</p>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fas fa-brain"></i> Deep Learning & ML</h3>
+                    <p>Cross-disciplinary applications in healthcare, petroleum industry, and aerodynamics</p>
+                </div>
+                <div class="research-card">
+                    <h3><i class="fas fa-microchip"></i> GPU Computing</h3>
+                    <p>High-performance computing for medical and scientific applications</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Publications -->
+        <section id="publications" class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-book"></i>
+                Selected Publications
+            </h2>
+            <div class="pub-list">
+                <div class="pub-item">
+                    <div class="pub-title">An Automated Heart Shunt Recognition Pipeline Using Deep Neural Networks</div>
+                    <div class="pub-authors">W. Wang, H. Zhang, Y. Li, Y. Wang, Q. Zhang, G. Ding, L. Yin, J. Tang and <strong>B. Peng</strong></div>
+                    <div class="pub-journal">Journal of Digital Imaging, Informatics in Medicine, 2024</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag jcr-q1">JCR Q1</span>
+                        <span class="pub-tag sci">SCI</span>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-title">Convolutional Neural Network-based Speckle Tracking for Ultrasound Strain Elastography: An Unsupervised Learning Approach</div>
+                    <div class="pub-authors"><strong>S. Wen</strong>, <strong>B. Peng</strong>, X. Wei, J. Luo and J. Jiang</div>
+                    <div class="pub-journal">IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control, Vol.70, No.5, pp. 354-367, May 2023</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag jcr-q1">JCR Q1</span>
+                        <span class="pub-tag sci">SCI</span>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-title">A GPU-Accelerated 3-D Coupled Subsample Estimation Algorithm for Volumetric Breast Strain Elastography</div>
+                    <div class="pub-authors"><strong>B. Peng</strong>, <strong>Y. Wang</strong>, T. J. Hall and J. Jiang</div>
+                    <div class="pub-journal">IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control, Vol. 64, No. 4, pp. 694-705, April 2017</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag jcr-q1">JCR Q1</span>
+                        <span class="pub-tag sci">SCI</span>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-title">Relative Elastic Modulus Imaging Using Sector Ultrasound Data for Abdominal Applications</div>
+                    <div class="pub-authors"><strong>B. Peng</strong>, <strong>Y. Wang</strong>, W. Yang, T. Varghese and J. Jiang</div>
+                    <div class="pub-journal">IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control, Vol. 63, No. 9, pp. 1432-1440, Sept. 2016</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag jcr-q1">JCR Q1</span>
+                        <span class="pub-tag sci">SCI</span>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-title">Building an open-source simulation platform of acoustic radiation force-based breast elastography</div>
+                    <div class="pub-authors"><strong>Y. Wang</strong>, <strong>B. Peng</strong>, J. Jiang</div>
+                    <div class="pub-journal">Physics in Medicine & Biology, 2017, 62(5): 1949-1969</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag jcr-q1">JCR Q1</span>
+                        <span class="pub-tag sci">SCI</span>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-title">Neural Network-based Motion Tracking for Breast Ultrasound Strain Elastography</div>
+                    <div class="pub-authors"><strong>B. Peng</strong>, <strong>Y. Xian</strong>, Q. Zhang and J. Jiang</div>
+                    <div class="pub-journal">Ultrasonic Imaging, 2020, 42(2): 74-91</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag jcr-q3">JCR Q3</span>
+                        <span class="pub-tag sci">SCI</span>
+                    </div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-title">基于光线追踪的实时超声模拟与虚拟现实的集成</div>
+                    <div class="pub-authors"><strong>彭博</strong>, <strong>汪强</strong>, 青芮冰，尹立雪，姜劲枫</div>
+                    <div class="pub-journal">系统仿真学报，2022, 34(11): 2425-2436</div>
+                    <div class="pub-tags">
+                        <span class="pub-tag cscd">CSCD 核心</span>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px;">
+                <a href="https://scholar.google.com/citations?hl=en&user=1KgRnSAAAAAJ" target="_blank" style="color: var(--secondary-color); text-decoration: none; font-weight: 600; font-size: 15px;">
+                    <i class="fas fa-external-link-alt"></i> View all publications on Google Scholar
+                </a>
+            </p>
+        </section>
+        
+        <!-- Services -->
+        <section id="services" class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-chalkboard-teacher"></i>
+                Journal Reviewer
+            </h2>
+            <div class="services-grid">
+                <div class="service-item">IEEE Transactions on Medical Imaging</div>
+                <div class="service-item">IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control</div>
+                <div class="service-item">Pattern Recognition</div>
+                <div class="service-item">Medical Physics</div>
+                <div class="service-item">Ultrasonics</div>
+                <div class="service-item">Computational and Mathematical Methods in Medicine</div>
+                <div class="service-item">Journal of Healthcare Engineering</div>
+                <div class="service-item">Medical & Biological Engineering & Computing</div>
+            </div>
+        </section>
+        
+        <!-- Students -->
+        <section id="students" class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap"></i>
+                Students
+            </h2>
+            <div style="background: #fffaf0; border-left: 4px solid #ed8936; padding: 15px 20px; border-radius: 8px; margin-bottom: 25px;">
+                <strong style="color: #c05621;">To potential graduate students:</strong> 
+                <span style="color: #744210;">If you are interested in doing research with me, please drop me an email with your CV.</span>
+            </div>
+            
+            <h3 style="color: var(--primary-color); margin: 25px 0 15px 0; font-size: 18px;">
+                <i class="fas fa-check-circle"></i> Graduated Students (Recent)
+            </h3>
+            <div class="students-grid">
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Jiajun Cai</span>
+                    <div class="student-destination">PhD @ 重庆大学</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Wenzhao Han</span>
+                    <div class="student-destination">PhD @ Nagoya University</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Tianqiang Xiang</span>
+                    <div class="student-destination">@ 四川银行总行</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Yihong Zhu</span>
+                    <div class="student-destination">@ 中国空气动力研究与发展中心</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Xiaofeng Li</span>
+                    <div class="student-destination">@ 绵阳师范学院</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Yuting Zhang</span>
+                    <div class="student-destination">@ 深圳中科飞测股份有限公司</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Xinyue Zhang</span>
+                    <div class="student-destination">@ 成都天奥测控技术有限公司</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Zhiyong Chen</span>
+                    <div class="student-destination">@ 深圳中科飞测科技股份有限公司</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Yuhao Xia</span>
+                    <div class="student-destination">@ 成都天奥信息科技有限公司</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2025</span>
+                    <span class="student-info">Xinyu Li</span>
+                    <div class="student-destination">@ 熊谷加世电器有限公司</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2024</span>
+                    <span class="student-info">Yaqiong Xiao</span>
+                    <div class="student-destination">@ 中信银行成都软件开发中心</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2024</span>
+                    <span class="student-info">Yuqi Jiang</span>
+                    <div class="student-destination">@ 西华师范大学网络与信息化管理中心</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2024</span>
+                    <span class="student-info">Weidong Wang</span>
+                    <div class="student-destination">@ 烜翊数智（上海）科技有限公司</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2024</span>
+                    <span class="student-info">Weikang Hou</span>
+                    <div class="student-destination">PhD @ Kobe University</div>
+                </div>
+            </div>
+            
+            <h3 style="color: var(--primary-color); margin: 25px 0 15px 0; font-size: 18px;">
+                <i class="fas fa-user-graduate"></i> Undergraduate Students
+            </h3>
+            <div class="students-grid">
+                <div class="student-card">
+                    <span class="student-year">2021</span>
+                    <span class="student-info">Zeying Liu</span>
+                    <div class="student-destination">University of Birmingham, UK</div>
+                </div>
+                <div class="student-card">
+                    <span class="student-year">2021</span>
+                    <span class="student-info">Ziyuan Cao</span>
+                    <div class="student-destination">Tokyo Metropolitan University, Japan</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer style="text-align: center; padding: 30px 0; color: var(--text-light); font-size: 14px;">
+            <p>© 2026 Bo Peng | Southwest Petroleum University</p>
+            <p>Last updated: March 2026</p>
+        </footer>
+    </main>
+</body>
+</html>
